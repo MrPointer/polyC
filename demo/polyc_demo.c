@@ -4,7 +4,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
-#include <polyC/polyInterface.h>
+#include <polyC/Interface.h>
 #include <polyC/InterfaceImplementation.h>
 
 void dog_makeSound()
