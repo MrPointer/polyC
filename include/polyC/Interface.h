@@ -1,3 +1,8 @@
+//
+// Created by Timor Gruber on 11/12/19.
+// Copyright (c) 2019 Takpit. All rights reserved.
+//
+
 #ifndef POLYC_INTERFACE_H
 #define POLYC_INTERFACE_H
 

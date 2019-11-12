@@ -1,5 +1,6 @@
 //
-// Created by timor.g on 11/12/19.
+// Created by Timor Gruber on 11/12/19.
+// Copyright (c) 2019 Takpit. All rights reserved.
 //
 
 #ifndef POLYC_MACROUTILS_H

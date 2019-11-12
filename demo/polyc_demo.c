@@ -1,5 +1,6 @@
 //
-// Created by timor.g on 11/11/19.
+// Created by Timor Gruber on 11/11/19.
+// Copyright (c) 2019 Takpit. All rights reserved.
 //
 
 #include <stdio.h>
