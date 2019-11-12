@@ -1,17 +1,11 @@
 #ifndef POLYC_INTERFACE_H
 #define POLYC_INTERFACE_H
 
-#define _CONCAT_TOKENS(x, y) x##y
-#define CONCAT_TOKENS(x, y) _CONCAT_TOKENS(x,y)
+#include "utility/MacroUtils.h"
+#include "Action.h"
+#include "Func.h"
 
 #define POLYC_INTERFACE_METHOD_SUFFIX _polyc_method
-
-#define DECLARE_ACTION(name) typedef void(*CONCAT_TOKENS(name, POLYC_INTERFACE_METHOD_SUFFIX))();
-#define DECLARE_ACTION_ARG(name, argument) \
-typedef void(*CONCAT_TOKENS(name, POLYC_INTERFACE_METHOD_SUFFIX))(argument arg);
-
-#define DECLARE_FUNC(name, returnType) \
-typedef returnType (*CONCAT_TOKENS(name, POLYC_INTERFACE_METHOD_SUFFIX))();
 
 #define DECLARE_INTERFACE(name, method) \
         typedef struct name \
