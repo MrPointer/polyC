@@ -7,8 +7,14 @@
 #define POLYC_FUNC_H
 
 #include "utility/MacroUtils.h"
+#include "Method.h"
 
-#define DECLARE_FUNC(name, returnType) \
-typedef returnType (*CONCAT_TOKENS(name, POLYC_INTERFACE_METHOD_SUFFIX))();
+#define DECLARE_FUNC(name, ...) VFUNC1(DECLARE_FUNC, name,  __VA_ARGS__)
+
+#define DECLARE_FUNC1(name, returnType) typedef returnType (*CONCAT_TOKENS(name, POLYC_INTERFACE_METHOD_SUFFIX))();
+#define DECLARE_FUNC2(name, returnType, arg1) \
+        typedef returnType (*CONCAT_TOKENS(name, POLYC_INTERFACE_METHOD_SUFFIX))(arg1 a1);
+#define DECLARE_FUNC3(name, returnType, arg1, arg2) \
+        typedef returnType (*CONCAT_TOKENS(name, POLYC_INTERFACE_METHOD_SUFFIX))(arg1 a1, arg2 a2);
 
 #endif //POLYC_FUNC_H

@@ -10,15 +10,14 @@
 #include "Action.h"
 #include "Func.h"
 
-#define POLYC_INTERFACE_METHOD_SUFFIX _polyc_method
+#define DECLARE_INTERFACE(name, ...) VFUNC1(DECLARE_INTERFACE, name, __VA_ARGS__);
 
-#define DECLARE_INTERFACE(name, method) \
+#define DECLARE_INTERFACE1(name, method1) \
         typedef struct name \
         { \
-            CONCAT_TOKENS(method, POLYC_INTERFACE_METHOD_SUFFIX) (method); \
+            CONCAT_TOKENS(method1, POLYC_INTERFACE_METHOD_SUFFIX) (method1); \
         } I##name;
-
-#define DECLARE_MULTI_INTERFACE(name, method1, method2) \
+#define DECLARE_INTERFACE2(name, method1, method2) \
         typedef struct name \
         { \
             CONCAT_TOKENS(method1, POLYC_INTERFACE_METHOD_SUFFIX) (method1); \
