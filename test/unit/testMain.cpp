@@ -5,3 +5,6 @@
 #define CATCH_CONFIG_MAIN
 
 #include <catch2/catch.hpp>
+#include <fff.h>
+
+DEFINE_FFF_GLOBALS
