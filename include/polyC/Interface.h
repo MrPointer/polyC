@@ -10,6 +10,10 @@
 #include "Action.h"
 #include "Func.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define DECLARE_INTERFACE(name, ...) VFUNC1(DECLARE_INTERFACE, name, __VA_ARGS__);
 
 #define DECLARE_INTERFACE1(name, method1) \
@@ -23,5 +27,9 @@
             CONCAT_TOKENS(method1, POLYC_INTERFACE_METHOD_SUFFIX) (method1); \
             CONCAT_TOKENS(method2, POLYC_INTERFACE_METHOD_SUFFIX) (method2); \
         } I##name;
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

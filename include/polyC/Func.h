@@ -9,6 +9,10 @@
 #include "utility/MacroUtils.h"
 #include "Method.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define DECLARE_FUNC(name, ...) VFUNC1(DECLARE_FUNC, name,  __VA_ARGS__)
 
 #define DECLARE_FUNC1(name, returnType) typedef returnType (*CONCAT_TOKENS(name, POLYC_INTERFACE_METHOD_SUFFIX))();
@@ -16,5 +20,9 @@
         typedef returnType (*CONCAT_TOKENS(name, POLYC_INTERFACE_METHOD_SUFFIX))(arg1 a1);
 #define DECLARE_FUNC3(name, returnType, arg1, arg2) \
         typedef returnType (*CONCAT_TOKENS(name, POLYC_INTERFACE_METHOD_SUFFIX))(arg1 a1, arg2 a2);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //POLYC_FUNC_H
