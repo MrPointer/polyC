@@ -5,7 +5,9 @@ project(polyC C CXX)
 add_library(polyC STATIC src/Interface.c)
 target_include_directories(polyC PUBLIC include)
 
-add_subdirectory(demo)
+if (DEMO)
+    add_subdirectory(demo)
+endif ()
 
 if (TEST)
     if (UNIT_TEST)
