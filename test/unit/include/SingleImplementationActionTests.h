@@ -10,23 +10,24 @@ extern "C"
 {
 #endif
 
-#include <polyC/Interface.h>
+#include <polyC/Implementation.h>
+#include "ActionInterfaces.h"
+
+//region No Args
+
+DECLARE_IMPLEMENTATION(NoArgActionInterfaceImpl, NoArgsActionInterface)
 
 void actionNoArgsImpl();
 
-DECLARE_ACTION(actionNoArgs)
+//endregion
 
-DECLARE_INTERFACE(NoArgActionInterface, actionNoArgs)
-
-DECLARE_IMPLEMENTATION(NoArgActionInterfaceImpl, NoArgActionInterface)
-
-void actionSingleArgImpl(int arg);
-
-DECLARE_ACTION(actionSingleArg, int)
-
-DECLARE_INTERFACE(SingleArgActionInterface, actionSingleArg)
+//region Single Arg
 
 DECLARE_IMPLEMENTATION(SingleArgActionInterfaceImpl, SingleArgActionInterface)
+
+void actionSingleArgImpl(int);
+
+//endregion
 
 #ifdef __cplusplus
 }

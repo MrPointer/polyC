@@ -5,7 +5,6 @@
 
 #include <catch2/catch.hpp>
 #include <fff.h>
-#include <polyC/Implementation.h>
 
 #include "SingleImplementationActionTests.h"
 
@@ -16,7 +15,7 @@ SCENARIO("Interface with no-arg action calls implementation method")
 {
     GIVEN("Interface implementation")
     {
-        NoArgActionInterface singleActionInterface{};
+        NoArgsActionInterface singleActionInterface{};
         initNoArgActionInterfaceImpl((&singleActionInterface));
 
         WHEN("Interface calls method in polymorphic way")
