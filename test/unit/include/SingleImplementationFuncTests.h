@@ -11,22 +11,23 @@ extern "C"
 #endif
 
 #include <polyC/Interface.h>
+#include "FuncInterfaces.h"
 
-int funcNoArgsImpl();
-
-DECLARE_FUNC(funcNoArgs, int)
-
-DECLARE_INTERFACE(NoArgsFuncInterface, funcNoArgs)
+//region No Args
 
 DECLARE_IMPLEMENTATION(NoArgsFuncInterfaceImpl, NoArgsFuncInterface)
 
-int funcSingleArgImpl(int arg);
+int funcNoArgsImpl();
 
-DECLARE_FUNC(funcSingleArg, int, int)
+//endregion
 
-DECLARE_INTERFACE(SingleArgFuncInterface, funcSingleArg)
+//region Single Arg
 
 DECLARE_IMPLEMENTATION(SingleArgFuncInterfaceImpl, SingleArgFuncInterface)
+
+int funcSingleArgImpl(int arg);
+
+//endregion
 
 #ifdef __cplusplus
 }

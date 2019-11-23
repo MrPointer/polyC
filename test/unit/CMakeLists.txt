@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.6)
 
 add_executable(polyC_unit_tests testMain.cpp
         src/SingleImplementationActionTests.cpp src/SingleImplementationFuncTests.cpp
-        src/MultiImplementationActionTests.cpp)
+        src/MultiImplementationActionTests.cpp src/MultiImplementationFuncTests.cpp)
 
 target_include_directories(polyC_unit_tests PRIVATE include)
 
