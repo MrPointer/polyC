@@ -13,7 +13,7 @@ extern "C" {
 #endif
 
 #define DECLARE_IMPLEMENTATION(name, baseInterface) \
-        typedef I##baseInterface name; \
+        typedef baseInterface name; \
         void init##name(name *instance);
 
 #define DEFINE_IMPLEMENTATION(name, ...) VFUNC1(DEFINE_IMPLEMENTATION, name, __VA_ARGS__);

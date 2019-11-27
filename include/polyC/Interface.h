@@ -17,16 +17,16 @@ extern "C" {
 #define DECLARE_INTERFACE(name, ...) VFUNC1(DECLARE_INTERFACE, name, __VA_ARGS__);
 
 #define DECLARE_INTERFACE1(name, method1) \
-        typedef struct name \
+        typedef struct name##_t \
         { \
             CONCAT_TOKENS(method1, POLYC_INTERFACE_METHOD_SUFFIX) (method1); \
-        } I##name;
+        } name;
 #define DECLARE_INTERFACE2(name, method1, method2) \
-        typedef struct name \
+        typedef struct name##_t \
         { \
             CONCAT_TOKENS(method1, POLYC_INTERFACE_METHOD_SUFFIX) (method1); \
             CONCAT_TOKENS(method2, POLYC_INTERFACE_METHOD_SUFFIX) (method2); \
-        } I##name;
+        } name;
 
 #ifdef __cplusplus
 }
