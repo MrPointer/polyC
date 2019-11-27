@@ -6,7 +6,7 @@
 #include <catch2/catch.hpp>
 #include <fff.h>
 
-#include "SingleImplementationActionTests.h"
+#include "action/SingleImplementationActionTests.h"
 
 DEFINE_IMPLEMENTATION(NoArgActionInterfaceImpl, actionNoArgs, actionNoArgsImpl)
 FAKE_VOID_FUNC(actionNoArgsImpl) // Fake the declared function to enable call statistics

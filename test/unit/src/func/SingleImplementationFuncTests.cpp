@@ -7,7 +7,7 @@
 #include <fff.h>
 #include <polyC/Implementation.h>
 
-#include "SingleImplementationFuncTests.h"
+#include "func/SingleImplementationFuncTests.h"
 
 DEFINE_IMPLEMENTATION(NoArgsFuncInterfaceImpl, funcNoArgs, funcNoArgsImpl)
 FAKE_VALUE_FUNC(int, funcNoArgsImpl) // Fake the declared function to enable call statistics

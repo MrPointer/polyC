@@ -5,7 +5,7 @@
 #include <catch2/catch.hpp>
 #include <fff.h>
 
-#include "MultiImplementationActionTests.h"
+#include "action/MultiImplementationActionTests.h"
 
 //region No-Args
 
