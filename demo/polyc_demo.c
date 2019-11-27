@@ -22,7 +22,7 @@ bool cat_isFriendly()
 
 DECLARE_ACTION(makeSound)
 
-DECLARE_FUNC(isFriendly, bool)
+DECLARE_FUNC(bool, isFriendly)
 
 DECLARE_INTERFACE(Animal, makeSound, isFriendly)
 

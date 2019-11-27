@@ -13,12 +13,12 @@ extern "C"
 #include <polyC/Interface.h>
 
 //========= No Args =========
-DECLARE_FUNC(funcNoArgs, int)
+DECLARE_FUNC(int, funcNoArgs)
 
 DECLARE_INTERFACE(NoArgsFuncInterface, funcNoArgs)
 
 //========= Single Arg =========
-DECLARE_FUNC(funcSingleArg, int, int)
+DECLARE_FUNC(int, funcSingleArg, int)
 
 DECLARE_INTERFACE(SingleArgFuncInterface, funcSingleArg)
 
