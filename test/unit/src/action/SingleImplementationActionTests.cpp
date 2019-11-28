@@ -8,17 +8,21 @@
 
 #include "action/SingleImplementationActionTests.h"
 
-DEFINE_IMPLEMENTATION(NoArgActionInterfaceImpl, actionNoArgs, actionNoArgsImpl)
-FAKE_VOID_FUNC(actionNoArgsImpl) // Fake the declared function to enable call statistics
+// Fake declared functions to enable call statistics
+FAKE_VOID_FUNC(actionNoArgsImpl)
 
-SCENARIO("Interface with no-arg action calls implementation method")
+FAKE_VOID_FUNC(actionSingleArgImpl, int)
+
+DEFINE_IMPLEMENTATION(NoArgActionInterfaceImpl, actionNoArgs, actionNoArgsImpl)
+
+SCENARIO("Interface with no-args action calls implementation action")
 {
     GIVEN("Interface implementation")
     {
         NoArgsActionInterface singleActionInterface{};
         initNoArgActionInterfaceImpl((&singleActionInterface));
 
-        WHEN("Interface calls method in polymorphic way")
+        WHEN("Interface calls action")
         {
             singleActionInterface.actionNoArgs();
             THEN("Registered method is called")
@@ -26,7 +30,7 @@ SCENARIO("Interface with no-arg action calls implementation method")
                 REQUIRE(actionNoArgsImpl_fake.call_count == 1);
             }
         }
-        AND_WHEN("Implementation calls method directly")
+        AND_WHEN("Concrete implementation calls action")
         {
             NoArgActionInterfaceImpl
                     interfaceImplementation = (NoArgActionInterfaceImpl) singleActionInterface;
@@ -40,16 +44,15 @@ SCENARIO("Interface with no-arg action calls implementation method")
 }
 
 DEFINE_IMPLEMENTATION(SingleArgActionInterfaceImpl, actionSingleArg, actionSingleArgImpl)
-FAKE_VOID_FUNC(actionSingleArgImpl, int) // Fake the declared function to enable call statistics
 
-SCENARIO("Interface with single-arg action calls implementation method")
+SCENARIO("Interface with single-arg action calls implementation action")
 {
     GIVEN("Interface implementation")
     {
         SingleArgActionInterface singleActionInterface{};
         initSingleArgActionInterfaceImpl((&singleActionInterface));
 
-        WHEN("Interface calls method in polymorphic way")
+        WHEN("Interface calls action")
         {
             singleActionInterface.actionSingleArg(0);
             THEN("Registered method is called")
@@ -57,7 +60,7 @@ SCENARIO("Interface with single-arg action calls implementation method")
                 REQUIRE(actionSingleArgImpl_fake.call_count == 1);
             }
         }
-        AND_WHEN("Implementation calls method directly")
+        AND_WHEN("Concrete implementation calls action")
         {
             SingleArgActionInterfaceImpl
                     interfaceImplementation = (SingleArgActionInterfaceImpl) singleActionInterface;

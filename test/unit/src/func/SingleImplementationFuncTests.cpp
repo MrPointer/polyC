@@ -9,17 +9,21 @@
 
 #include "func/SingleImplementationFuncTests.h"
 
-DEFINE_IMPLEMENTATION(NoArgsFuncInterfaceImpl, funcNoArgs, funcNoArgsImpl)
-FAKE_VALUE_FUNC(int, funcNoArgsImpl) // Fake the declared function to enable call statistics
+// Fake declared functions to enable call statistics
+FAKE_VALUE_FUNC(int, funcNoArgsImpl)
 
-SCENARIO("Interface with no-arg func calls implementation method")
+FAKE_VALUE_FUNC(int, funcSingleArgImpl, int)
+
+DEFINE_IMPLEMENTATION(NoArgsFuncInterfaceImpl, funcNoArgs, funcNoArgsImpl)
+
+SCENARIO("Interface with no-args func calls implementation func")
 {
     GIVEN("Interface implementation")
     {
         NoArgsFuncInterface singleNoArgFuncInterface{};
         initNoArgsFuncInterfaceImpl((&singleNoArgFuncInterface));
 
-        WHEN("Interface calls method in polymorphic way")
+        WHEN("Interface calls func")
         {
             singleNoArgFuncInterface.funcNoArgs();
             THEN("Registered method is called")
@@ -27,7 +31,7 @@ SCENARIO("Interface with no-arg func calls implementation method")
                 REQUIRE(funcNoArgsImpl_fake.call_count == 1);
             }
         }
-        AND_WHEN("Implementation calls method directly")
+        AND_WHEN("Concrete implementation calls func")
         {
             NoArgsFuncInterfaceImpl
                     interfaceImplementation = (NoArgsFuncInterfaceImpl) singleNoArgFuncInterface;
@@ -41,16 +45,15 @@ SCENARIO("Interface with no-arg func calls implementation method")
 }
 
 DEFINE_IMPLEMENTATION(SingleArgFuncInterfaceImpl, funcSingleArg, funcSingleArgImpl)
-FAKE_VALUE_FUNC(int, funcSingleArgImpl, int) // Fake the declared function to enable call statistics
 
-SCENARIO("Interface with single-arg func calls implementation method")
+SCENARIO("Interface with single-arg func calls implementation func")
 {
     GIVEN("Interface implementation")
     {
         SingleArgFuncInterface singleNoArgFuncInterface{};
         initSingleArgFuncInterfaceImpl((&singleNoArgFuncInterface));
 
-        WHEN("Interface calls method in polymorphic way")
+        WHEN("Interface calls func")
         {
             singleNoArgFuncInterface.funcSingleArg(0);
             THEN("Registered method is called")
@@ -58,7 +61,7 @@ SCENARIO("Interface with single-arg func calls implementation method")
                 REQUIRE(funcSingleArgImpl_fake.call_count == 1);
             }
         }
-        AND_WHEN("Implementation calls method directly")
+        AND_WHEN("Concrete implementation calls func")
         {
             SingleArgFuncInterfaceImpl
                     interfaceImplementation = (SingleArgFuncInterfaceImpl) singleNoArgFuncInterface;
