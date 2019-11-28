@@ -31,8 +31,13 @@ int compositeFuncSingleArgImpl(int);
 
 //endregion
 
+//region Varied Arg
+
 DECLARE_IMPLEMENTATION(NoArgsActionVariedCompositeInterfaceImpl, NoArgsActionVariedCompositeInterface)
+
 DECLARE_IMPLEMENTATION(NoArgsFuncVariedCompositeInterfaceImpl, NoArgsFuncVariedCompositeInterface)
+
+//endregion
 
 #ifdef __cplusplus
 }
