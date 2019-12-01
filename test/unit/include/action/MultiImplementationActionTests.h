@@ -17,11 +17,9 @@ extern "C"
 
 DECLARE_IMPLEMENTATION(NoArgsActionInterfaceImpl1, NoArgsActionInterface)
 DECLARE_IMPLEMENTATION(NoArgsActionInterfaceImpl2, NoArgsActionInterface)
-DECLARE_IMPLEMENTATION(NoArgsActionInterfaceImpl3, NoArgsActionInterface)
 
 void actionNoArgsImpl1();
 void actionNoArgsImpl2();
-void actionNoArgsImpl3();
 
 //endregion
 
@@ -29,11 +27,9 @@ void actionNoArgsImpl3();
 
 DECLARE_IMPLEMENTATION(SingleArgActionInterfaceImpl1, SingleArgActionInterface)
 DECLARE_IMPLEMENTATION(SingleArgActionInterfaceImpl2, SingleArgActionInterface)
-DECLARE_IMPLEMENTATION(SingleArgActionInterfaceImpl3, SingleArgActionInterface)
 
 void actionSingleArgImpl1(int arg);
 void actionSingleArgImpl2(int arg);
-void actionSingleArgImpl3(int arg);
 
 //endregion
 

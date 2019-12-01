@@ -13,16 +13,12 @@ DEFINE_IMPLEMENTATION(NoArgsActionInterfaceImpl1, actionNoArgs, actionNoArgsImpl
 
 DEFINE_IMPLEMENTATION(NoArgsActionInterfaceImpl2, actionNoArgs, actionNoArgsImpl2)
 
-DEFINE_IMPLEMENTATION(NoArgsActionInterfaceImpl3, actionNoArgs, actionNoArgsImpl3)
-
 // Fake declared functions to enable call statistics
 FAKE_VOID_FUNC(actionNoArgsImpl1)
 
 FAKE_VOID_FUNC(actionNoArgsImpl2)
 
-FAKE_VOID_FUNC(actionNoArgsImpl3)
-
-SCENARIO("Interface with no-args action calls referenced implementation's method")
+SCENARIO("Interface with no-args action calls assigned implementation")
 {
     GIVEN("Interface with no-args action")
     {
@@ -56,20 +52,6 @@ SCENARIO("Interface with no-args action calls referenced implementation's method
                 }
             }
         }
-        AND_GIVEN("Implementation 3")
-        {
-            initNoArgsActionInterfaceImpl3(&noArgActionInterface);
-
-            WHEN("Interface method is called")
-            {
-                noArgActionInterface.actionNoArgs();
-
-                THEN("Registered method is called")
-                {
-                    REQUIRE(actionNoArgsImpl3_fake.call_count == 1);
-                }
-            }
-        }
     }
 }
 
@@ -81,18 +63,14 @@ DEFINE_IMPLEMENTATION(SingleArgActionInterfaceImpl1, actionSingleArg, actionSing
 
 DEFINE_IMPLEMENTATION(SingleArgActionInterfaceImpl2, actionSingleArg, actionSingleArgImpl2)
 
-DEFINE_IMPLEMENTATION(SingleArgActionInterfaceImpl3, actionSingleArg, actionSingleArgImpl3)
-
 // Fake declared functions to enable call statistics
 FAKE_VOID_FUNC(actionSingleArgImpl1, int)
 
 FAKE_VOID_FUNC(actionSingleArgImpl2, int)
 
-FAKE_VOID_FUNC(actionSingleArgImpl3, int)
-
-SCENARIO("Interface with single-arg action calls referenced implementation's method")
+SCENARIO("Interface with single-arg action calls assigned implementation")
 {
-    GIVEN("Interface with no-args action")
+    GIVEN("Interface with single-arg action")
     {
         SingleArgActionInterface noArgActionInterface{};
 
@@ -121,20 +99,6 @@ SCENARIO("Interface with single-arg action calls referenced implementation's met
                 THEN("Registered method is called")
                 {
                     REQUIRE(actionSingleArgImpl2_fake.call_count == 1);
-                }
-            }
-        }
-        AND_GIVEN("Implementation 3")
-        {
-            initSingleArgActionInterfaceImpl3(&noArgActionInterface);
-
-            WHEN("Interface method is called")
-            {
-                noArgActionInterface.actionSingleArg(0);
-
-                THEN("Registered method is called")
-                {
-                    REQUIRE(actionSingleArgImpl3_fake.call_count == 1);
                 }
             }
         }
