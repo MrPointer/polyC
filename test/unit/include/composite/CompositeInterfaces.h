@@ -1,0 +1,34 @@
+//
+// Created by Timor Gruber on 11/27/19.
+// Copyright (c) 2019 Takpit. All rights reserved.
+//
+#ifndef POLYC_COMPOSITEINTERFACES_H
+#define POLYC_COMPOSITEINTERFACES_H
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+#include <polyC/Interface.h>
+
+//========= No Args =========
+DECLARE_ACTION(compositeActionNoArgs)
+DECLARE_FUNC(int, compositeFuncNoArgs)
+
+DECLARE_INTERFACE(NoArgsCompositeInterface, compositeActionNoArgs, compositeFuncNoArgs)
+
+//========= Single Arg =========
+DECLARE_ACTION(compositeActionSingleArg, int)
+DECLARE_FUNC(int, compositeFuncSingleArg, int)
+
+DECLARE_INTERFACE(SingleArgCompositeInterface, compositeActionSingleArg, compositeFuncSingleArg)
+
+//========= Varied Arg =========
+DECLARE_INTERFACE(NoArgsActionVariedCompositeInterface, compositeActionNoArgs, compositeFuncSingleArg)
+DECLARE_INTERFACE(NoArgsFuncVariedCompositeInterface, compositeActionSingleArg, compositeFuncNoArgs)
+
+#ifdef __cplusplus
+}
+#endif
+#endif //POLYC_COMPOSITEINTERFACES_H

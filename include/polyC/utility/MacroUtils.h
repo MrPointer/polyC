@@ -6,6 +6,10 @@
 #ifndef POLYC_MACROUTILS_H
 #define POLYC_MACROUTILS_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define _CONCAT_TOKENS(x, y) x##y
 #define CONCAT_TOKENS(x, y) _CONCAT_TOKENS(x,y)
 
@@ -32,5 +36,9 @@
 #define VFUNC(func, ...) CONCAT_TOKENS(func, __NARG__(__VA_ARGS__)) (__VA_ARGS__)
 #define VFUNC1(func, param1, ...) CONCAT_TOKENS(func, __NARG__(__VA_ARGS__)) (param1, __VA_ARGS__)
 #define VFUNC2(func, param1, param2, ...) CONCAT_TOKENS(func, __NARG__(__VA_ARGS__)) (param1, param2, __VA_ARGS__)
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //POLYC_MACROUTILS_H

@@ -8,8 +8,12 @@
 
 #include "Interface.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define DECLARE_IMPLEMENTATION(name, baseInterface) \
-        typedef I##baseInterface name; \
+        typedef baseInterface name; \
         void init##name(name *instance);
 
 #define DEFINE_IMPLEMENTATION(name, ...) VFUNC1(DEFINE_IMPLEMENTATION, name, __VA_ARGS__);
@@ -24,5 +28,9 @@
             instance->methodName1 = (method1); \
             instance->methodName2 = (method2); \
         }
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif //POLYC_IMPLEMENTATION_H

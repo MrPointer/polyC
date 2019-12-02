@@ -22,15 +22,15 @@ bool cat_isFriendly()
 
 DECLARE_ACTION(makeSound)
 
-DECLARE_FUNC(isFriendly, bool)
+DECLARE_FUNC(bool, isFriendly)
 
-DECLARE_INTERFACE(Animal, makeSound, isFriendly)
+DECLARE_INTERFACE(IAnimal, makeSound, isFriendly)
 
-DECLARE_IMPLEMENTATION(Dog, Animal)
+DECLARE_IMPLEMENTATION(Dog, IAnimal)
 
 DEFINE_IMPLEMENTATION(Dog, makeSound, dog_makeSound, isFriendly, dog_isFriendly)
 
-DECLARE_IMPLEMENTATION(Cat, Animal)
+DECLARE_IMPLEMENTATION(Cat, IAnimal)
 
 DEFINE_IMPLEMENTATION(Cat, makeSound, cat_makeSound, isFriendly, cat_isFriendly)
 
