@@ -466,6 +466,7 @@ _deps
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
+.idea/**/markdown*
 
 # Generated files
 .idea/**/contentModel.xml
@@ -532,4 +533,6 @@ fabric.properties
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-[Bb]uild/
+[Bb]uild*/
+
+.idea/
