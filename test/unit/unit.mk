@@ -36,6 +36,3 @@ ${unit_cxx_main_objs}: ${unit_build_dir}/%.o: ${unit_src_dir}/%.cpp ${unit_inclu
 ${unit_cxx_alt_objs}: ${unit_build_dir}/%.o: ${relative_dir}/%.cpp
 	$(dir_guard)
 	$(CXX) ${CPPFLAGS} ${CXXFLAGS} -c $< -o $@
-
-clean::
-	-rm ${unit_cxx_main_objs} ${unit_cxx_alt_objs}

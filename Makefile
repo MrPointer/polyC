@@ -1,7 +1,16 @@
 dir_guard = @mkdir -p $(@D)
+
+build_dir := build-make
+
+polyc_include_dirs := include
+polyc_includes := $(shell find ${polyc_include_dirs} -name '*.h*')
+
+CFLAGS += -I${polyc_include_dirs}
+
 targets := polyc
 
 include demo/demo.mk
+
 ifdef UNIT_TEST
 	include test/test.mk
 endif
@@ -10,32 +19,23 @@ endif
 .PHONY: all
 all: ${targets}
 
-src_dir := src
-build_dir := build-make
+polyc_src_dirs := src
 
-SOURCES = Interface.c
-
-c_main_sources := $(foreach src,${SOURCES},${src_dir}/${src})
-c_main_objs := $(c_main_sources:${src_dir}/%.c=${build_dir}/%.o)
-
-include_dir := ${CURDIR}/include
-include_files := $(wilcard ${include_dir}/*.h) $(wilcard ${include_dir}/*.hpp)
-
-CFLAGS += -I${include_dir}
+polyc_sources := $(shell find ${polyc_src_dirs} -name '*.c')
+polyc_objects := ${polyc_sources:%.c=${build_dir}/%.o}
 
 polyc_target_output = libpolyc
 polyc_target_suffix = a
 polyc_target_output_path = ${build_dir}/${polyc_target_output}.${polyc_target_suffix}
 
-polyc: ${c_main_objs}
+polyc: ${polyc_objects}
 	mkdir -p ${build_dir}
-	ar rcs ${polyc_target_output_path} $<
+	ar rcs ${polyc_target_output_path} ${polyc_objects}
 
-${c_main_objs}: ${build_dir}/%.o: ${src_dir}/%.c ${include_files}
+${polyc_objects}: ${build_dir}/%.o: %.c ${polyc_includes}
 	$(dir_guard)
 	${CC} ${CFLAGS} -c $< -o $@
 
 .PHONY: clean
-clean::
-	-rm -rf ${build_dir}
-	#-rm ${OBJS} ${polyc_target_output_path}
+clean:
+	${RM} -rf ${build_dir}
