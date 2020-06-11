@@ -38,4 +38,4 @@ ${polyc_objects}: ${build_dir}/%.o: %.c ${polyc_includes}
 
 .PHONY: clean
 clean:
-	${RM} -rf ${build_dir}
+	${RM} -r ${build_dir}
